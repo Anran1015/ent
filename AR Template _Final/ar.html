@@ -1,0 +1,64 @@
+<!doctype HTML>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    </head>
+    <script src="https://aframe.io/releases/0.9.0/aframe.min.js"></script>
+    <script src="https://rawgit.com/jeromeetienne/AR.js/master/aframe/build/aframe-ar.min.js"></script>
+    <script src="https://rawgit.com/donmccurdy/aframe-extras/master/dist/aframe-extras.loaders.min.js"></script>
+    <script type="text/javascript" src="events.js"></script>
+    
+    <body style='margin : 0px; overflow: hidden;'>
+        <!-- we add detectionMode and matrixCodeType to tell AR.js to recognize barcode markers -->
+        <a-scene embedded arjs='sourceType: webcam; debugUIEnabled: false; detectionMode: mono_and_matrix; matrixCodeType: 3x3;'>
+
+        <a-assets>
+            <a-asset-item id="animated-asset" src="https://raw.githubusercontent.com/nicolocarpignoli/nicolocarpignoli.github.io/master/ar-click-events/models/CesiumMan.gltf"></a-asset-item>
+        </a-assets>
+
+        
+
+            <a-marker type='pattern' preset="custom" url="https://raw.githubusercontent.com/Anran1015/testen/master/pattern-textmarker.patt">
+            <a-plane height="3" width="1.6" rotation="-90 0 0" color ="#0260AA"  opacity ="0.6" position ="0 0 0"> </a-plane>
+            <a-image src="https://raw.githubusercontent.com/Anran1015/ent/master/ui/CoArtLogo.png" width=".6" height=".6" position ="0.4 0.1 -1.3" rotation="-90 0 0"></a-image> -->
+       
+
+            <a-text rotation="-90 0 0" position = '-0.6 0.1 -1.2' height="2.7" width="2.7" value="The Rise"></a-text>
+            <a-text rotation="-90 0 0" position = '-0.6 0.1 -1'height="2.2" width="2.2"  value="Evan Sadler"></a-text>
+            
+            <a-text rotation="-90 0 0" position = '-0.6 0.1 -0.3'  height="2" width="2"  line-height="56"
+                value="
+                    
+                    Canadian who grew up in Japan, 
+                    now loves to create everything 
+                    from comics, videos, music, 
+                    games and drawings. Anything 
+                    goes in outer space. No side 
+                    is up and no side is down. 
+                    This piece can be set up at 
+                    any angle and the beauty of 
+                    the sun can still be enjoyed
+                    at its best."
+
+            ></a-text>
+
+
+ 
+
+           <!--  <a-box color="tomato" depth="0.5" height="0.5" width="0.5" rotation="-90 0 0" position ="0.7 0 0.1" navigate-on-click="url: http://evernote.com"></a-box> -->
+           <a-text rotation="-90 0 0" position = '-0.2 0.2 0.6'height="2.2" width="2.2" color="whte" value="Portfolio" navigate-on-click="url: http://ocadu.ca"></a-text>
+            <a-plane height="0.2" width="1" rotation="-90 0 0" color ="black" position ="0 0.1 0.6" navigate-on-click="url: http://ocadu.ca"></a-plane>
+            
+            <a-text rotation="-90 0 0" position = '-0.24 0.2 0.88'height="2.2" width="2.2" color="white" value="Instagram" navigate-on-click="url: https://www.twitter.com"></a-text>
+            
+            <a-plane height="0.2" width="1" rotation="-90 0 0" color ="black" position ="0 0.1 0.9" navigate-on-click="url: https://www.twitter.com"></a-plane>
+
+        </a-marker>
+
+
+        <!-- use this <a-entity camera> to support multiple-markers, otherwise use <a-marker-camera> instead of </a-marker> -->
+        <a-entity camera="" cursor="rayOrigin: mouse" fuse="false">
+        <!-- <a-entity camera="" look-controls cursor="rayOrigin: mouse" >></a-entity> -->
+        </a-scene>
+    </body>
+</html>
