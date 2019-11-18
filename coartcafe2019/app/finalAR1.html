@@ -1,0 +1,668 @@
+<!doctype HTML>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+/* Style the header */
+.header {
+  background-color: #f1f1f1;
+  padding: 20px;
+  text-align: center;
+}
+
+/* Style the top navigation bar */
+.topnav {
+  overflow: hidden;
+  background-color: #333;
+}
+
+/*p {
+  font-family: Arial, Helvetica, sans-serif
+}*/
+
+/* Style the topnav links */
+.topnav a {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+/* Change color on hover */
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+/* Create three equal columns that floats next to each other */
+.column {
+  float: left;
+  width: 100%;
+/*  padding: 15px;*/
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+
+.button {
+background-color: #FE620A;
+font-family: arial;
+  border: none;
+  color: white;
+  padding: 18px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: block;
+  font-size: 16px;
+  width: 100%;
+  margin-top: 0%;
+  margin-left:auto;
+  margin-right:auto;
+  cursor: pointer;
+
+}
+
+/* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
+
+  .column {
+    width: 100%;
+  }
+
+</style>
+
+
+
+
+
+
+</head>
+<script src="https://aframe.io/releases/0.9.0/aframe.min.js"></script>
+<script src="https://rawgit.com/jeromeetienne/AR.js/master/aframe/build/aframe-ar.min.js"></script>
+<script src="https://rawgit.com/donmccurdy/aframe-extras/master/dist/aframe-extras.loaders.min.js"></script>
+<script type="text/javascript" src="events.js"></script>
+
+
+
+<div class="row">
+  <div class="column">
+     <a href="finalAR2.html" class="button">On yellow. Go to blue</a>
+   <!--  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sit amet pretium urna. Vivamus venenatis velit nec neque ultricies, eget elementum magna tristique. Quisque vehicula, risus eget aliquam placerat, purus leo tincidunt eros, eget luctus quam orci in velit. Praesent scelerisque tortor sed accumsan convallis.</p> -->
+</div>
+  
+
+</div>
+
+
+<body style='margin : 0px; overflow: hidden;'>
+	<a-scene embedded arjs='sourceType: webcam; debugUIEnabled: false; detectionMode: mono_and_matrix; matrixCodeType: 3x3;'>
+			<a-entity id="mouseCursor" cursor="rayOrigin: mouse" raycaster="objects: #button, #box, #plane"></a-entity>
+				<!-- Property for Artwork Titles - 1 Line. Using this mixin id gives an entity Title properties. -->
+						<a-assets>
+							<a-mixin id="title1" rotation="-90 0 0" position="-0.6 0.3 -1.3" text="align: left; font:exo2bold; height: 2.3; width: 1.2; wrap-count: 12;"></a-mixin>
+						</a-assets>
+
+				<!-- Property for Artwork Title Shadows - 1 Line. Using this mixin id gives an entity Title Shadow properties. -->
+						<a-assets>
+							<a-mixin id="shadow1" rotation="-90 0 0" position="-0.59 0.28 -1.29" text=" color:black; font: exo2bold; height: 2.3; width: 1.2; wrap-count: 12;"></a-mixin>
+						</a-assets>
+
+				<!-- Property for Artwork Titles - 2 Lines. Using this mixin id gives an entity Title properties. -->
+						<a-assets>
+							<a-mixin id="title2" rotation="-90 0 0" position="-0.6 0.3 -1.3" text="align: left; font:exo2bold; height: 2.3; width: 1.2; wrap-count: 13; line-height: 30;"></a-mixin>
+						</a-assets>
+
+				<!-- Property for Artwork Title Shadows - 2 Lines. Using this mixin id gives an entity Title Shadow properties. -->
+						<a-assets>
+							<a-mixin id="shadow2" rotation="-90 0 0" position="-0.59 0.28 -1.29" text=" color:black; font: exo2bold; height: 2.3; width: 1.2; wrap-count: 13; line-height: 30;"></a-mixin>
+						</a-assets>
+
+				<!-- Property for Artist Names - Use if artwork title is 1 line. This mixin id gives an entity Name properties. -->
+						<a-assets>
+							<a-mixin id="name1" rotation="-90 0 0" position="-0.6 0.3 -1.1" text="align: left;  font:exo2bold; height: 1.5; width: 1.2; wrap-count: 20;"></a-mixin>
+						</a-assets>
+
+						<a-assets>
+							<!-- Use if artwork title is 2 lines.  -->
+							<a-mixin id="name2" rotation="-90 0 0" position="-0.6 0.3 -1.07" text="align: left;  font:exo2bold; height: 1.5; width: 1.2; wrap-count: 20;"></a-mixin>
+						</a-assets>
+
+				<!-- Property for Artist Statements. This mixin id gives an entity Artist Statement properties. -->
+						<a-assets> 
+							<a-mixin id="statement" rotation="-90 0 0" position="-0.6 0.1 -0.7" text="align: left; line-height: 56; height: 2.2; width: 1.2; wrap-count: 25;"></a-mixin>
+						</a-assets>
+
+				<!-- Property id for Artist Bios. This mixin id gives an entity Artist Bio properties. -->
+						<a-assets> 
+							<a-mixin id="bio" rotation="-90 0 0" position="-0.6 0.1 0" height="1.5" width="1.5" wrap-count="25" text="align: left; height: 2.2; width: 1.2; wrap-count: 25; line-height: 56"></a-mixin>
+						</a-assets>
+
+				<!-- Property id for sale price. -->
+						<a-assets>
+							<a-mixin id="price" rotation="-90 0 0" position="-0.6 0.1 0.4" text="align: left; line-height: 56; height: 2.2; width: 1.2; wrap-count: 30;"></a-mixin>
+						</a-assets>
+
+				<!-- Property id for blue background plane -->
+						<a-assets>
+							<a-mixin id="bg" geometry="primitive: plane; height: 3; width: 1.6" material="color: #00448D; opacity: 0.8" rotation="-90 0 0" position="0 0 0"></a-mixin>
+						</a-assets>
+
+				<!-- Property id for Co Art Cafe Logo -->
+						<a-assets>
+							<a-mixin id="logo" geometry="primitive: plane; height: 0.6; width: 0.6" material="src: https://raw.githubusercontent.com/Anran1015/ent/master/logo.png; transparent: true" rotation="-90 0 0" position="0.4 0.2 -1.3"></a-mixin>
+						</a-assets>
+
+
+				<!-- Property id for Instagram and Portfolio buttons -->
+						<a-assets>
+								<a-mixin id="portfolio" geometry="primitive: plane; height: 0.2; width: 1" material="color: #2E2A2E;" rotation="-90 0 0" position="0 0.1 0.6" animation__mouseenter="property: components.material.material.color; type: color; from: #2E2A2E; to: orange; startEvents: mouseenter; dur: 500"
+				                animation__mouseleave="property: components.material.material.color; type: color; from: orange; to: #2E2A2E; startEvents: mouseleave; dur: 500"></a-mixin>
+								<a-mixin id="instagram" geometry="primitive: plane; height: 0.2; width: 1" material="color: #2E2A2E;" rotation="-90 0 0" position="0 0.1 0.9" animation__mouseenter="property: components.material.material.color; type: color; from: #2E2A2E; to: orange; startEvents: mouseenter; dur: 500"
+				                animation__mouseleave="property: components.material.material.color; type: color; from: orange; to: #2E2A2E; startEvents: mouseleave; dur: 500"></a-mixin>
+						</a-assets>
+
+
+
+<!-- 14A. Umber Bhatti - Virgin Maryam -->
+<!-- /////////////////////////////Replace the marker link ///////////////////////////// -->
+<a-marker type='pattern' preset="custom" 
+		url="https://raw.githubusercontent.com/Anran1015/ent/master/PATTfile/pattern-UmberBhatti.patt">
+
+				<a-plane mixin="bg"></a-plane>
+				<a-plane mixin="logo"></a-plane>
+
+		<!-- /////////////////////////////Replace the text to artwork name///////////////////////////// -->
+				<a-text mixin="title1" value="Virgin Maryam"></a-text>
+				<a-text mixin="shadow1" value="Virgin Maryam"></a-text>
+
+		<!-- /////////////////////////////Replace the text to artist name///////////////////////////// -->
+				<a-text mixin="name1" value="Umber"></a-text>
+
+		<!-- /////////////////////////////Replace the artistic statement below //////////////////// -->
+				<a-text mixin="statement" position="-0.6 0.1 -0.59" wrap-count="32" value="oil on canvas
+		This piece is a combination of Islam and Christianity shown through Virgin Mary wearing a blue mantle and niqab (garment of clothing which covers the face). They are both religions of peace and their commonality is often lost in the turmoil of antagonistic voices who push politics of fear."></a-text>
+
+		<!-- /////////////////////////////Replace the bio below /////////////////////////////////// -->
+				<a-text mixin="bio" position="-0.6 0.1 0.15" wrap-count="32" value="BIO: I am a Graphic Designer located in Toronto. My work consists of a fusion of various mediums and styles. My biggest inspiration are people, behaviours, physical beauties and cultures. Most of  the work I create I do either reflects my own or my client's experiences."></a-text>
+
+		<!-- /////////////////////////////Replace the portfolio link below if there is one. Remove if no link provided.///////////////////// -->
+				<a-plane id="button" mixin="portfolio" position = "0 0.1 0.6" navigate-on-click="url: https://www.bhatti-umber.format.com"></a-plane>
+				<a-text rotation="-90 0 0" position = '-0.2 0.2 0.6'height="2.2" width="2.2" color="white" value="Portfolio" navigate-on-click="url: https://www.bhatti-umber.format.com"></a-text>
+
+		<!-- /////////////////////////////Replace the instagram link below if there is one. Remove if no link provided.//////////////////// -->
+				<a-plane id="button" mixin="instagram" position = "0 0.1 0.9" navigate-on-click="url: https://www.instagram.com/umber.designs/"></a-plane>
+				<a-text rotation="-90 0 0" position = '-0.24 0.2 0.88'height="2.2" width="2.2" color="white" value="Instagram" ></a-text>
+</a-marker>
+<!-- END of Umber Bhatti - Virgin Maryam -->
+
+<!-- 14B. Umber Bhatti - Rajasthani Woman Mandala -->
+<!-- /////////////////////////////Replace the marker link ///////////////////////////// -->
+<a-marker type='pattern' preset="custom" 
+		url="https://raw.githubusercontent.com/Anran1015/ent/master/PATTfile/pattern-UmberBhatti2.patt">
+
+				<a-plane mixin="bg"></a-plane>
+				<a-plane mixin="logo"></a-plane>
+
+		<!-- /////////////////////////////Replace the text to artwork name///////////////////////////// -->
+				<a-text mixin="title2" value="Rajasthani Woman Mandala"></a-text>
+				<a-text mixin="shadow2" value="Rajasthani Woman Mandala"></a-text>
+
+		<!-- /////////////////////////////Replace the text to artist name///////////////////////////// -->
+				<a-text mixin="name2" position="-0.6 0.3 -1.04" value="Umber"></a-text>
+
+		<!-- /////////////////////////////Replace the artistic statement below //////////////////// -->
+				<a-text mixin="statement" position="-0.6 0.1 -0.59" wrap-count="40" value="acrylic on canvas 
+				I come from a culture that has raised strong women. Rajasthani women would travel long distances in the scorching heat to fetch clean water for their families which would often take the whole day. Some of these women would stack pots of water that weighed several tons. And they did this while wearing gems-studded gold and silver which inspired the mandala pattern surrounding her. Her nose ring is seen as a beautiful accessory but it also protects her from the heat as metal provides cooling for the face."></a-text>
+
+		<!-- /////////////////////////////Replace the bio below /////////////////////////////////// -->
+				<a-text mixin="bio" position="-0.6 0.1 0.15" wrap-count="40" value="BIO: I am a Graphic Designer located in Toronto. My work consists of a fusion of various mediums and styles. My biggest inspiration are people, behaviours, physical beauties and cultures. Most of  the work I create I do either reflects my own or my client's experiences."></a-text>
+
+		<!-- /////////////////////////////Replace the portfolio link below if there is one. Remove if no link provided.///////////////////// -->
+				<a-plane id="button" mixin="portfolio" position = "0 0.1 0.6" navigate-on-click="url: https://www.bhatti-umber.format.com"></a-plane>
+				<a-text rotation="-90 0 0" position = '-0.2 0.2 0.6'height="2.2" width="2.2" color="white" value="Portfolio" navigate-on-click="url: bhatti-umber.format.com"></a-text>
+
+		<!-- /////////////////////////////Replace the instagram link below if there is one. Remove if no link provided.//////////////////// -->
+				<a-plane id="button" mixin="instagram" position = "0 0.1 0.9" navigate-on-click="url: https://www.instagram.com/umber.designs/"></a-plane>
+				<!-- <a-plane height="0.2" width="1" rotation="-90 0 0" color ="#2E2A2E" position ="0 0.1 0.9" radius="10"
+				navigate-on-click="url: www.instagram.com/umber.designs/"></a-plane> -->
+				<a-text rotation="-90 0 0" position = '-0.24 0.2 0.88'height="2.2" width="2.2" color="white" value="Instagram" ></a-text>
+</a-marker>
+<!-- END of Umber Bhatti - Rajasthani Woman Mandala -->
+
+<!-- 12. Benjamin Palavics - The Joker -->
+<!-- /////////////////////////////Replace the marker link ///////////////////////////// -->
+<a-marker type='pattern' preset="custom" 
+		url="https://raw.githubusercontent.com/Anran1015/ent/master/PATTfile/pattern-BenjaminPalavics.patt">
+
+							<a-plane mixin="bg"></a-plane>
+							<a-plane mixin="logo"></a-plane>
+
+					<!-- /////////////////////////////Replace the text to artwork name///////////////////////////// -->
+							<a-text mixin="title1" value="The Joker"></a-text>
+							<a-text mixin="shadow1" value="The Joker"></a-text>
+
+					<!-- /////////////////////////////Replace the text to artist name///////////////////////////// -->
+							<a-text mixin="name1" value="Beny"></a-text>
+
+					<!-- /////////////////////////////Replace the artistic statement below //////////////////// -->
+							<a-text mixin="statement" position="-0.6 0.1 -0.45" value="I created a tribute piece of artwork for the most famous villian in comic book history and the recently released film called The Joker."></a-text>
+
+					<!-- /////////////////////////////Replace the bio below /////////////////////////////////// -->
+							<a-text mixin="bio" position="-0.6 0.1 0.35" value="BIO: I'm nobody just a kid trying to do what I love."></a-text>
+
+					<!-- /////////////////////////////Replace the instagram link below if there is one. Remove if no link provided.//////////////////// -->
+							<a-plane id="button" mixin="instagram" position = "0 0.1 0.9" navigate-on-click="url: https://www.instagram.com/benypalavics"></a-plane>
+					<!-- 		<a-plane height="0.2" width="1" rotation="-90 0 0" color ="#2E2A2E" position ="0 0.1 0.9" radius="10"
+							navigate-on-click="url: www.instagram.com/benypalavics"></a-plane> -->
+							<a-text rotation="-90 0 0" position = '-0.24 0.2 0.88'height="2.2" width="2.2" color="white" value="Instagram" ></a-text>
+</a-marker>
+<!-- END of Benjamin Palavics - The Joker -->
+
+
+
+		<!-- 6A. Aneel Vyas - Blueish Boy -->
+		<!-- /////////////////////////////Replace the marker link ///////////////////////////// -->
+<a-marker type='pattern' preset="custom" 
+				url="https://raw.githubusercontent.com/Anran1015/ent/master/PATTfile/pattern-AneelVyas.patt">
+
+						<a-plane mixin="bg"></a-plane>
+						<a-plane mixin="logo"></a-plane>
+
+				<!-- /////////////////////////////Replace the text to artwork name///////////////////////////// -->
+						<a-text mixin="title1" value="Blueish Boy"></a-text>
+						<a-text mixin="shadow1" value="Blueish Boy"></a-text>
+
+				<!-- /////////////////////////////Replace the text to artist name///////////////////////////// -->
+						<a-text mixin="name1" value="Aneel Vyas"></a-text>
+
+				<!-- /////////////////////////////Replace the artistic statement below //////////////////// -->
+						<a-text mixin="statement" position="-0.6 0.1 -0.65" value="Although possessing great power, the lack of confidence stops our inner warrior from exploring the magic within us and reach our full potential."></a-text>
+
+				<!-- /////////////////////////////Replace the bio below /////////////////////////////////// -->
+						<a-text mixin="bio" position="-0.6 0.1 0.1" value="BIO: Fine Artist located in Toronto. Open for commissions, so reach me via Instagram."></a-text>
+
+				<!-- /////////////////////////////Replace the instagram link below if there is one. Remove if no link provided.//////////////////// -->
+						<a-plane id="button" mixin="instagram" position = "0 0.1 0.6" navigate-on-click="url: https://www.instagram.com/aneel_art/"></a-plane>
+				<!-- 						<a-plane id="button" mixin="portfolio" position = "0 0.1 0.9" navigate-on-click="url: www.facebook.com"></a-plane> -->
+						<!-- <a-entity id="box" geometry="primitive: plane" material="color: red" position="0 1.8 0" rotation="0 30 90"
+			            animation__mouseenter="property: components.material.material.color; type: color; from: red; to: blue; startEvents: mouseenter; dur: 500"
+		                animation__mouseleave="property: components.material.material.color; type: color; from: blue; to: red; startEvents: mouseleave; dur: 500"></a-entity> -->
+
+			          <!-- <a-entity id="plane" geometry="primitive: plane" material="color: red" position="0 1.8 0" rotation="0 30 0" -->
+				<!--              animation__mouseenter="property: components.material.material.color; type: color; from: red; to: blue; startEvents: mouseenter; dur: 500"
+		                animation__mouseleave="property: components.material.material.color; type: color; from: blue; to: red; startEvents: mouseleave; dur: 500"></a-entity> -->
+
+						<a-text rotation="-90 0 0" position = '-0.24 0.2 0.6'height="2.2" width="2.2" color="white" value="Instagram" ></a-text>
+</a-marker>
+<!-- END of Aneel Vyas - Blueish Boy -->
+
+<!-- 6B. Aneel Vyas - Two Lovers -->
+<!-- /////////////////////////////Replace the marker link ///////////////////////////// -->
+<a-marker type='pattern' preset="custom" 
+		url="https://raw.githubusercontent.com/Anran1015/ent/master/PATTfile/pattern-AneelVyas2.patt">
+
+				<a-plane mixin="bg"></a-plane>
+				<a-plane mixin="logo"></a-plane>
+
+		<!-- /////////////////////////////Replace the text to artwork name///////////////////////////// -->
+				<a-text mixin="title1" value="Two Lovers"></a-text>
+				<a-text mixin="shadow1" value="Two Lovers"></a-text>
+
+		<!-- /////////////////////////////Replace the text to artist name///////////////////////////// -->
+				<a-text mixin="name1" value="Aneel Vyas"></a-text>
+
+		<!-- /////////////////////////////Replace the artistic statement below //////////////////// -->
+				<a-text mixin="statement" height="1" width="1.2"  position="-0.6 0.1 -0.45" value="Peacock symbolizes Vision, Royalty, Spirituality, Awakening, Guidance, Protection, & Watchfulness. In Greco-Roman mythology the Peacock tail has the 'eyes' of the stars. For this reason the Peacock feather represents immortality, and can absorb negative energies, protecting those who wear them."></a-text>
+
+		<!-- /////////////////////////////Replace the bio below /////////////////////////////////// -->
+				<a-text mixin="bio" height="1" width="1.2"  position="-0.6 0.1 0.4" value="BIO: Fine Artist located in Toronto. I'm open for commissions, so please reach out to me via Instagram."></a-text>
+
+		<!-- /////////////////////////////Replace the instagram link below if there is one. Remove if no link provided.//////////////////// -->
+				<a-plane id="button" mixin="instagram" position = "0 0.1 0.9" navigate-on-click="url: https://www.instagram.com/aneel_art/"></a-plane>
+				<!-- <a-plane height="0.2" width="1" rotation="-90 0 0" color ="#2E2A2E" position ="0 0.1 0.6" radius="10"
+				navigate-on-click="url: https://www.instagram.com/aneel_art/"></a-plane> -->
+				<a-text rotation="-90 0 0" position = '-0.24 0.2 0.9'height="2.2" width="2.2" color="white" value="Instagram" ></a-text>
+</a-marker>
+<!-- END of Aneel Vyas - Two Lovers -->
+
+
+<!-- 6C. Aneel Vyas - Beyond the Peacock feather -->
+<!-- /////////////////////////////Replace the marker link ///////////////////////////// -->
+<a-marker type='pattern' preset="custom" 
+		url="https://raw.githubusercontent.com/Anran1015/ent/master/PATTfile/pattern-AneelVyas3.patt">
+
+		<a-plane mixin="bg"></a-plane>
+		<a-plane mixin="logo"></a-plane>
+
+		<!-- /////////////////////////////Replace the text to artwork name///////////////////////////// -->
+				<a-text mixin="title2" value="Beyond the Peacock feather"></a-text>
+				<a-text mixin="shadow2" value="Beyond the Peacock feather"></a-text>
+
+		<!-- /////////////////////////////Replace the text to artist name///////////////////////////// -->
+				<a-text mixin="name2" value="Aneel Vyas"></a-text>
+
+		<!-- /////////////////////////////Replace the artistic statement below //////////////////// -->
+				<a-text mixin="statement" position="-0.6 0.1 -0.65" value="Since the peacock feather symbolizes many things including spirituality, through the peacock feather we are able to see love personified into a personality named Krishna."></a-text>
+
+		<!-- /////////////////////////////Replace the bio below /////////////////////////////////// -->
+				<a-text mixin="bio" position="-0.6 0.1 0.1" value="BIO: Fine Artist located in Toronto. I'm open for commissions, so please reach out to me via Instagram."></a-text>
+
+		<!-- /////////////////////////////Replace the instagram link below if there is one. Remove if no link provided.//////////////////// -->
+				<a-plane id="button" mixin="instagram" position = "0 0.1 0.6" navigate-on-click="url: https://www.instagram.com/aneel_art/"></a-plane>
+				<!-- <a-plane height="0.2" width="1" rotation="-90 0 0" color ="#2E2A2E" position ="0 0.1 0.6" radius="10"
+				navigate-on-click="url: https://www.instagram.com/aneel_art/"></a-plane> -->
+				<a-text rotation="-90 0 0" position = '-0.24 0.2 0.6'height="2.2" width="2.2" color="white" value="Instagram" ></a-text>
+</a-marker>
+<!-- END of Aneel Vyas - Beyond the Peacock feather -->
+
+
+<!-- 6D. Aneel Vyas - Peacock Explosion -->
+<!-- /////////////////////////////Replace the marker link ///////////////////////////// -->
+<a-marker type='pattern' preset="custom" 
+		url="https://raw.githubusercontent.com/Anran1015/ent/master/PATTfile/pattern-AneelVyas4.patt">
+
+						<a-plane mixin="bg"></a-plane>
+						<a-plane mixin="logo"></a-plane>
+
+				<!-- /////////////////////////////Replace the text to artwork name///////////////////////////// -->
+						<a-text mixin="title2" value="Peacock Explosion"></a-text>
+						<a-text mixin="shadow2" value="Peacock Explosion"></a-text>
+
+				<!-- /////////////////////////////Replace the text to artist name///////////////////////////// -->
+						<a-text mixin="name2" value="Aneel Vyas"></a-text>
+
+				<!-- /////////////////////////////Replace the artistic statement below //////////////////// -->
+						<a-text mixin="statement" position="-0.6 0.1 -0.5" value="The peacock feather symbolizes many things, such as vision, royalty, spirituality, awakening, guidance, protection, & watchfulness. In this artwork, the feathers are exploding in the canvas, with all that it symbolizes."></a-text>
+
+				<!-- /////////////////////////////Replace the bio below /////////////////////////////////// -->
+						<a-text mixin="bio" position="-0.6 0.1 0.2" value="BIO: Fine Artist located in Toronto. I'm open for commissions, so please reach out to me via Instagram."></a-text>
+
+				<!-- /////////////////////////////Replace the instagram link below if there is one. Remove if no link provided.//////////////////// -->
+						<a-plane id="button" mixin="instagram" position = "0 0.1 0.9" navigate-on-click="url: https://www.instagram.com/aneel_art/"></a-plane>
+						<!-- <a-plane height="0.2" width="1" rotation="-90 0 0" color ="#2E2A2E" position ="0 0.1 0.6" radius="10"
+						navigate-on-click="url: https://www.instagram.com/aneel_art/"></a-plane> -->
+						<a-text rotation="-90 0 0" position = '-0.24 0.2 0.9'height="2.2" width="2.2" color="white" value="Instagram" ></a-text>
+</a-marker>
+<!-- END of Aneel Vyas - Peacock Explosion -->
+
+<!-- 2. Lee Robley Reid - Dragonotch meteor shower -->
+<a-marker type='pattern' preset="custom" 
+		url="https://raw.githubusercontent.com/Anran1015/ent/master/PATTfile/pattern-LeeRobley.patt">
+
+			<a-plane mixin="bg"></a-plane>
+			<a-plane mixin="logo"></a-plane>
+
+			<!-- /////////////////////////////Replace the text to artwork name///////////////////////////// -->
+					<a-text mixin="title2" value="Dragonotch meteor shower"></a-text>
+					<a-text mixin="shadow2" value="Dragonotch meteor shower"></a-text>
+
+			<!-- /////////////////////////////Replace the text to artist name///////////////////////////// -->
+					<a-text mixin="name2" value="Bernobayo"></a-text>
+
+			<!-- /////////////////////////////Replace the artistic statement below //////////////////// -->
+					<a-text mixin="statement" position="-0.6 0.1 -0.45" value="This was made on panel using pen only. It is my representation of looking out across water and remembering the ones that dont live with us anymore. The scene is a bay with multiple skulls portraying the aches and gaps the deceased leave behind."></a-text>
+
+			<!-- /////////////////////////////Replace the bio below /////////////////////////////////// -->
+					<a-text mixin="bio" position="-0.6 0.1 0.35" value="BIO: Meant to explore in the abstraction field built to see What others turn their eyes from."></a-text>
+</a-marker>
+<!-- END of Lee Robley Reid - Dragonotch meteor shower -->
+
+<!-- 4. Kristi Chen - Un-tensils at the dinner table -->
+<!-- /////////////////////////////Replace the marker link ///////////////////////////// -->
+<a-marker type='pattern' preset="custom" 
+		url="https://raw.githubusercontent.com/Anran1015/ent/master/PATTfile/pattern-KristiChen.patt">
+
+				<a-plane mixin="bg"></a-plane>
+				<a-plane mixin="logo"></a-plane>
+
+		<!-- /////////////////////////////Replace the text to artwork name///////////////////////////// -->
+				<a-text mixin="title2" value="Un-tensils at the dinner table"></a-text>
+				<a-text mixin="shadow2" value="Un-tensils at the dinner table"></a-text>
+
+		<!-- /////////////////////////////Replace the text to artist name///////////////////////////// -->
+				<a-text mixin="name2" value="Kristi Chen"></a-text>
+
+		<!-- /////////////////////////////Replace the artistic statement below //////////////////// -->
+				<a-text mixin="statement" position="-0.6 0.1 -0.45" value="These utensils are de-formed from it's original shape and context through bending and merging from one utensil to another; creating new utensils. Introducing these objects will force participants to re-learn how to use them and furthermore, developing a new culture/etiquette for eating."></a-text>
+
+		<!-- /////////////////////////////Replace the bio below /////////////////////////////////// -->
+				<a-text mixin="bio" position="-0.6 0.1 0.35" value="BIO: Toronto based visual artist."></a-text>
+
+		<!-- /////////////////////////////Replace the portfolio link below if there is one. Remove if no link provided.///////////////////// -->
+					<a-plane id="button" mixin="portfolio" position = "0 0.1 0.6" navigate-on-click="url: https://www.chen-kristi.format.com/"></a-plane>
+				<!-- <a-plane height="0.2" width="1" rotation="-90 0 0" color ="#2E2A2E" position ="0 0.1 0.6" 
+				navigate-on-click="url: chen-kristi.format.com"></a-plane> -->
+				<a-text rotation="-90 0 0" position = '-0.2 0.2 0.6'height="2.2" width="2.2" color="white" value="Portfolio" navigate-on-click="url: https://www.chen-kristi.format.com/"></a-text>
+
+				<a-plane id="button" mixin="instagram" position = "0 0.1 0.9" navigate-on-click="url: https://www.instagram.com/kristi_xy/"></a-plane>
+				<a-text rotation="-90 0 0" position = '-0.24 0.2 0.88'height="2.2" width="2.2" color="white" value="Instagram" ></a-text>
+</a-marker>
+<!-- END of Kristi Chen - Un-tensils at the dinner table -->
+
+<!-- 10. Shayn Martens - smiley coasters -->
+<!-- /////////////////////////////Replace the marker link ///////////////////////////// -->
+<a-marker type='pattern' preset="custom" 
+		url="https://raw.githubusercontent.com/Anran1015/ent/master/PATTfile/pattern-ShaynMartens.patt">
+
+						<a-plane mixin="bg"></a-plane>
+						<a-plane mixin="logo"></a-plane>
+
+				<!-- /////////////////////////////Replace the text to artwork name///////////////////////////// -->
+						<a-text mixin="title2" value="smiley coasters"></a-text>
+						<a-text mixin="shadow2" value="smiley coasters"></a-text>
+
+				<!-- /////////////////////////////Replace the text to artist name///////////////////////////// -->
+						<a-text mixin="name2" value="Shayn"></a-text>
+
+				<!-- /////////////////////////////Replace the artistic statement below //////////////////// -->
+						<a-text mixin="statement" position="-0.6 0.1 -0.45" value="These playful coasters fit satisfyingly onto a smiley-shaped tenon. Made on my homemade pantorouter machine."></a-text>
+
+				<!-- /////////////////////////////Replace the bio below /////////////////////////////////// -->
+						<a-text mixin="bio" position="-0.6 0.1 0.35" value="BIO: Shayn Martens is a Toronto-based designer and maker."></a-text>
+
+				<!-- /////////////////////////////Replace the instagram link below if there is one. Remove if no link provided.//////////////////// -->
+						<a-plane id="button" mixin="instagram" position = "0 0.1 0.9" navigate-on-click="url: https://www.instagram.com/shayn_martens/"></a-plane>
+						<a-text rotation="-90 0 0" position = '-0.24 0.2 0.88'height="2.2" width="2.2" color="white" value="Instagram" ></a-text>
+</a-marker>
+<!-- END of Shayn Martens - Sam Likes Cheetos -->
+
+<!-- 15. Mark chacha mwita - “I miss the old Kanye” -->
+<!-- /////////////////////////////Replace the marker link ///////////////////////////// -->
+<a-marker type='pattern' preset="custom" 
+		url="https://raw.githubusercontent.com/Anran1015/ent/master/PATTfile/pattern-pattern-MarkchachamwitaChacha2.patt">
+
+					<a-plane mixin="bg"></a-plane>
+					<a-plane mixin="logo"></a-plane>
+
+			<!-- /////////////////////////////Replace the text to artwork name///////////////////////////// -->
+					<a-text mixin="title2" value="“I miss the old Kanye”"></a-text>
+					<a-text mixin="shadow2" value="“I miss the old Kanye”"></a-text>
+
+			<!-- /////////////////////////////Replace the text to artist name///////////////////////////// -->
+					<a-text mixin="name2" value="Chacha"></a-text>
+
+			<!-- /////////////////////////////Replace the artistic statement below //////////////////// -->
+					<a-text mixin="statement" position="-0.6 0.1 -0.45" value="My goal was to capture Kanye in his usually Demeanour. Weather you love him or hate him, he’s content and unswayable. In simple terms “he’s proudly him”. A construct I think we can all learn from in this time and age."></a-text>
+
+			<!-- /////////////////////////////Replace the bio below /////////////////////////////////// -->
+					<a-text mixin="bio" position="-0.6 0.1 0.35" value="BIO: Damn."></a-text>
+
+			<!-- /////////////////////////////Replace the instagram link below if there is one. Remove if no link provided.//////////////////// -->
+					<a-plane id="button" mixin="instagram" position = "0 0.1 0.9" navigate-on-click="url: https://www.instagram.com/chachaxmwita/"></a-plane>
+					<!-- <a-plane height="0.2" width="1" rotation="-90 0 0" color ="#2E2A2E" position ="0 0.1 0.9" radius="10"
+					navigate-on-click="url: https://www.instagram.com/chachaxmwita/"></a-plane> -->
+					<a-text rotation="-90 0 0" position = '-0.24 0.2 0.88'height="2.2" width="2.2" color="white" value="Instagram" ></a-text>
+</a-marker>
+<!-- END of Mark chacha mwita - “I miss the old Kanye” -->
+
+<!-- 11. Keenan	James H - DJ -->
+<!-- /////////////////////////////Replace the marker link ///////////////////////////// -->
+<a-marker type='pattern' preset="custom" 
+		url="https://raw.githubusercontent.com/Anran1015/ent/master/PATTfile/pattern-KeenanJamesH.patt">
+
+					<a-plane mixin="bg"></a-plane>
+					<a-plane mixin="logo"></a-plane>
+
+			<!-- /////////////////////////////Replace the text to artwork name///////////////////////////// -->
+					<a-text mixin="title1" value="DJ"></a-text>
+					<a-text mixin="shadow1" value="DJ"></a-text>
+
+			<!-- /////////////////////////////Replace the text to artist name///////////////////////////// -->
+					<a-text mixin="name1" value="keez"></a-text>
+
+			<!-- /////////////////////////////Replace the artistic statement below //////////////////// -->
+					<a-text mixin="statement" position="-0.6 0.1 -0.45" value="I provide crispy music, a smooth mix and a South African vibe to complement artwork from an artists point of view."></a-text>
+
+			<!-- /////////////////////////////Replace the bio below /////////////////////////////////// -->
+					<a-text mixin="bio" position="-0.6 0.1 0.35" value="BIO: Music enthusiast and Producer with a passion for Deejaying."></a-text>
+
+			<!-- /////////////////////////////Replace the instagram link below if there is one. Remove if no link provided.//////////////////// -->
+					<a-plane id="button" mixin="instagram" position = "0 0.1 0.9" navigate-on-click="url: https://www.instagram.com/kexnan/"></a-plane>
+					<a-text rotation="-90 0 0" position = '-0.24 0.2 0.88'height="2.2" width="2.2" color="white" value="Instagram" ></a-text>
+</a-marker>
+<!-- END of Keenan	James H - DJ -->
+
+<!-- 19. Shabad Singh - Drone to Car -->
+<!-- /////////////////////////////Replace the marker link ///////////////////////////// -->
+<a-marker type='pattern' preset="custom" 
+		url="https://raw.githubusercontent.com/Anran1015/ent/master/PATTfile/pattern-ShabadSingh.patt">
+
+						<a-plane mixin="bg"></a-plane>
+						<a-plane mixin="logo"></a-plane>
+
+				<!-- /////////////////////////////Replace the text to artwork name///////////////////////////// -->
+						<a-text mixin="title1" value="Drone to Car"></a-text>
+						<a-text mixin="shadow1" value="Drone to Car"></a-text>
+
+				<!-- /////////////////////////////Replace the text to artist name///////////////////////////// -->
+						<a-text mixin="name1" value="Shabad Singh"></a-text>
+
+				<!-- /////////////////////////////Replace the artistic statement below //////////////////// -->
+						<a-text mixin="statement" position="-0.6 0.1 -0.45" value="A concept that shows how my idea of a flying car would work."></a-text>
+
+				<!-- /////////////////////////////Replace the bio below /////////////////////////////////// -->
+						<a-text mixin="bio" position="-0.6 0.1 0.35" value="BIO: Toronto based product designer, brand strategist and young visionary."></a-text>
+
+				<!-- /////////////////////////////Replace the instagram link below if there is one. Remove if no link provided.//////////////////// -->
+						<a-plane id="button" mixin="instagram" position = "0 0.1 0.9" navigate-on-click="url: 
+							https://www.instagram.com/shabadsandal/"></a-plane>
+						<a-text rotation="-90 0 0" position = '-0.24 0.2 0.88'height="2.2" width="2.2" color="white" value="Instagram" ></a-text>
+					</a-marker>
+				<!-- END of Shabad Singh - Drone to Car -->
+</a-marker>
+
+<!-- 18. Aidan Kenny - Soul of Smoke -->
+<!-- /////////////////////////////Replace the marker link ///////////////////////////// -->
+<a-marker type='pattern' preset="custom" 
+		url="https://raw.githubusercontent.com/Anran1015/ent/master/PATTfile/pattern-AidanKenny.patt">
+
+		<a-plane mixin="bg"></a-plane>
+		<a-plane mixin="logo"></a-plane>
+
+		<!-- /////////////////////////////Replace the text to artwork name///////////////////////////// -->
+				<a-text mixin="title2" value="Soul of Smoke"></a-text>
+				<a-text mixin="shadow2" value="Soul of Smoke"></a-text>
+
+		<!-- /////////////////////////////Replace the text to artist name///////////////////////////// -->
+				<a-text mixin="name2" value="Aidan Kenny"></a-text>
+
+		<!-- /////////////////////////////Replace the artistic statement below //////////////////// -->
+				<a-text mixin="statement" position="-0.6 0.1 -0.35" wrap-count="40" value="All of my work derives from the fucked up situations I’ve thrown myself into chasing my dream... oh and heart break too lol. I don’t really look at my work as art, more like products of my environments. Its like my support system when life comes at me all fast and shit”. -Aidan Kenny
+				Kenny’s artwork has been published in news papers including the Wellington Advisor with over 41,000 copies
+				published. He has sold work in fine art galleries (Artusiasm gallery Toronto), and featured on local and national news stations including Global news. He is a featured muralist in several community engagement events curated through the city of Toronto’s stArt program, and the winning artist of the Minto Mural Initiative in 2019. He art directed the city of Harriston’s community engagement program “Harriston Rising”. He hopes to continue to expand his work internationally and have a solo art show in 2020."></a-text>
+
+		<!-- /////////////////////////////Replace the bio below /////////////////////////////////// -->
+				<a-text mixin="bio" position="-0.6 0.1 0.55" wrap-count="40" value="BIO: Aidan Kenny is an esteemed muralist born and raised in Hamilton Ontario. As a teenager he originally focused the majority of his time developing a name for himself in the underground Graffiti art community."></a-text>
+
+		<!-- /////////////////////////////Replace the instagram link below if there is one. Remove if no link provided.//////////////////// -->
+				<a-plane id="button" mixin="instagram" position = "0 0.1 1" navigate-on-click="url: https://www.instagram.com/_byaidan/"></a-plane>
+				<a-text rotation="-90 0 0" position = '-0.24 0.2 0.99'height="2.2" width="2.2" color="white" value="Instagram" ></a-text>
+</a-marker>
+		<!-- END of Aidan Kenny - Soul of Smoke -->
+
+<!-- 17. Daniel Naraindas - True Colours -->
+<!-- /////////////////////////////Replace the marker link ///////////////////////////// -->
+		<a-marker type='pattern' preset="custom" 
+		url="https://raw.githubusercontent.com/Anran1015/ent/master/PATTfile/pattern-DanielNaraindas.patt">
+
+		<a-plane mixin="bg"></a-plane>
+		<a-plane mixin="logo"></a-plane>
+
+<!-- /////////////////////////////Replace the text to artwork name///////////////////////////// -->
+		<a-text mixin="title1" value="True Colours"></a-text>
+		<a-text mixin="shadow1" value="True Colours"></a-text>
+
+<!-- /////////////////////////////Replace the text to artist name///////////////////////////// -->
+		<a-text mixin="name1" value="Daniel Naraindas"></a-text>
+
+<!-- /////////////////////////////Replace the artistic statement below //////////////////// -->
+		<a-text mixin="statement" position="-0.6 0.1 -0.35" wrap-count="35" value="This wearable piece is my expression of how technology can be used for than just as a utility or service but can also (hopefully) evoke an emotional response. 
+The concept behind this piece was inspired by how much our current generation hides our true feelings and intentions behind a screen like a mask. Mainly due to fear of emotional injury, these screens never really allow us to fully express ourselves to others and only provide a sliver of our true selves."></a-text>
+
+<!-- /////////////////////////////Replace the bio below /////////////////////////////////// -->
+		<a-text mixin="bio" position="-0.6 0.1 0.45" wrap-count="35" value="BIO: Futurist, nerd and creative strategist."></a-text>
+
+<!-- /////////////////////////////Replace the instagram link below if there is one. Remove if no link provided.//////////////////// -->
+		<a-plane id="button" mixin="instagram" position = "0 0.1 0.9" navigate-on-click="url: https://www.instagram.com/daniel.n4/"></a-plane>
+		<a-text rotation="-90 0 0" position = '-0.24 0.2 0.88'height="2.2" width="2.2" color="white" value="Instagram" ></a-text>
+	</a-marker>
+<!-- END of Daniel Naraindas - True Colours -->
+
+<!-- 14C. Umber Bhatti - Drowning -->
+<!-- /////////////////////////////Replace the marker link ///////////////////////////// -->
+<a-marker type='pattern' preset="custom" 
+		url="https://raw.githubusercontent.com/Anran1015/ent/master/PATTfile/pattern-UmberBhatti3.patt">
+
+		<a-plane mixin="bg"></a-plane>
+		<a-plane mixin="logo"></a-plane>
+
+		<!-- /////////////////////////////Replace the text to artwork name///////////////////////////// -->
+				<a-text mixin="title1" value="Drowning"></a-text>
+				<a-text mixin="shadow1" value="Drowning"></a-text>
+
+		<!-- /////////////////////////////Replace the text to artist name///////////////////////////// -->
+				<a-text mixin="name1" value="Umber"></a-text>
+
+		<!-- /////////////////////////////Replace the artistic statement below //////////////////// -->
+				<a-text mixin="statement" position="-0.6 0.1 -0.65" wrap-count="35" value="oil on canvas 
+				this portrait is a representation of how many people feel anxiety in their day to lives. It’s difficult to keep your head above water when circumstances are weighing you down. This girl appears to be invincible by her expression when in reality there are many things keeping her from rising above."></a-text>
+
+		<!-- /////////////////////////////Replace the bio below /////////////////////////////////// -->
+				<a-text mixin="bio" position="-0.6 0.1 0.15" wrap-count="35" value="BIO: I am a Graphic Designer located in Toronto. My work consists of a fusion of various mediums and styles. My biggest inspiration are people, behaviours, physical beauties and cultures. Most of  the work I create I do either reflects my own or my client's experiences."></a-text>
+
+		<!-- /////////////////////////////Replace the portfolio link below if there is one. Remove if no link provided.///////////////////// -->
+				<a-plane id="button" mixin="portfolio" position = "0 0.1 0.6" navigate-on-click="url: https://www.instagram.com/umber.designs/"></a-plane>
+				<!-- <a-plane height="0.2" width="1" rotation="-90 0 0" color ="#2E2A2E" position ="0 0.1 0.6" 
+				navigate-on-click="url: bhatti-umber.format.com"></a-plane> -->
+				<a-text rotation="-90 0 0" position = '-0.2 0.2 0.6'height="2.2" width="2.2" color="white" value="Portfolio" navigate-on-click="url: bhatti-umber.format.com"></a-text>
+
+		<!-- /////////////////////////////Replace the instagram link below if there is one. Remove if no link provided.//////////////////// -->
+				<a-plane id="button" mixin="instagram" position = "0 0.1 0.9" navigate-on-click="url: https://www.instagram.com/umber.designs/"></a-plane>
+				<!-- <a-plane height="0.2" width="1" rotation="-90 0 0" color ="#2E2A2E" position ="0 0.1 0.9" radius="10"
+				navigate-on-click="url: www.instagram.com/umber.designs/"></a-plane> -->
+				<a-text rotation="-90 0 0" position = '-0.24 0.2 0.88'height="2.2" width="2.2" color="white" value="Instagram" ></a-text>
+</a-marker>
+<!-- END of Umber Bhatti - Drowning -->
+
+<a-entity camera="" fuse="false"></a-entity>
+</a-scene> 
+
+
+
+</body>
+</html>

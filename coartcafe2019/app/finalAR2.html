@@ -1,0 +1,508 @@
+<!doctype HTML>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+/* Style the header */
+.header {
+  background-color: #f1f1f1;
+  padding: 20px;
+  text-align: center;
+}
+
+/* Style the top navigation bar */
+.topnav {
+  overflow: hidden;
+  background-color: #333;
+}
+
+/*p {
+  font-family: Arial, Helvetica, sans-serif
+}*/
+
+/* Style the topnav links */
+.topnav a {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+/* Change color on hover */
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+/* Create three equal columns that floats next to each other */
+.column {
+  float: left;
+  width: 100%;
+/*  padding: 15px;*/
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+
+.button {
+background-color: #0a80fe;
+font-family: arial;
+  border: none;
+  color: white;
+  padding: 18px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: block;
+  font-size: 16px;
+  width: 100%;
+  margin-top: 0%;
+  margin-left:auto;
+  margin-right:auto;
+  cursor: pointer;
+
+}
+
+/* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
+
+  .column {
+    width: 100%;
+  }
+
+</style>
+
+
+
+
+
+
+
+</head>
+<script src="https://aframe.io/releases/0.9.0/aframe.min.js"></script>
+<script src="https://rawgit.com/jeromeetienne/AR.js/master/aframe/build/aframe-ar.min.js"></script>
+<script src="https://rawgit.com/donmccurdy/aframe-extras/master/dist/aframe-extras.loaders.min.js"></script>
+<script type="text/javascript" src="events.js"></script>
+
+<div class="row">
+  <div class="column">
+     <a href="finalAR1.html" class="button">On blue. Go to yellow</a>
+   <!--  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sit amet pretium urna. Vivamus venenatis velit nec neque ultricies, eget elementum magna tristique. Quisque vehicula, risus eget aliquam placerat, purus leo tincidunt eros, eget luctus quam orci in velit. Praesent scelerisque tortor sed accumsan convallis.</p> -->
+</div>
+  
+
+</div>
+
+
+
+<body style='margin : 0px; overflow: hidden;'>
+	<a-scene embedded arjs='sourceType: webcam; debugUIEnabled: false; detectionMode: mono_and_matrix; matrixCodeType: 3x3;'>
+			<a-entity id="mouseCursor" cursor="rayOrigin: mouse" raycaster="objects: #button, #box, #plane"></a-entity>
+				<!-- Property for Artwork Titles - 1 Line. Using this mixin id gives an entity Title properties. -->
+						<a-assets>
+							<a-mixin id="title1" rotation="-90 0 0" position="-0.6 0.3 -1.3" text="align: left; font:exo2bold; height: 2.3; width: 1.2; wrap-count: 12;"></a-mixin>
+						</a-assets>
+
+				<!-- Property for Artwork Title Shadows - 1 Line. Using this mixin id gives an entity Title Shadow properties. -->
+						<a-assets>
+							<a-mixin id="shadow1" rotation="-90 0 0" position="-0.59 0.28 -1.29" text=" color:black; font: exo2bold; height: 2.3; width: 1.2; wrap-count: 12;"></a-mixin>
+						</a-assets>
+
+				<!-- Property for Artwork Titles - 2 Lines. Using this mixin id gives an entity Title properties. -->
+						<a-assets>
+							<a-mixin id="title2" rotation="-90 0 0" position="-0.6 0.3 -1.3" text="align: left; font:exo2bold; height: 2.3; width: 1.2; wrap-count: 13; line-height: 30;"></a-mixin>
+						</a-assets>
+
+				<!-- Property for Artwork Title Shadows - 2 Lines. Using this mixin id gives an entity Title Shadow properties. -->
+						<a-assets>
+							<a-mixin id="shadow2" rotation="-90 0 0" position="-0.59 0.28 -1.29" text=" color:black; font: exo2bold; height: 2.3; width: 1.2; wrap-count: 13; line-height: 30;"></a-mixin>
+						</a-assets>
+
+				<!-- Property for Artist Names - Use if artwork title is 1 line. This mixin id gives an entity Name properties. -->
+						<a-assets>
+							<a-mixin id="name1" rotation="-90 0 0" position="-0.6 0.3 -1.1" text="align: left;  font:exo2bold; height: 1.5; width: 1.2; wrap-count: 20;"></a-mixin>
+						</a-assets>
+
+						<a-assets>
+							<!-- Use if artwork title is 2 lines.  -->
+							<a-mixin id="name2" rotation="-90 0 0" position="-0.6 0.3 -1.07" text="align: left;  font:exo2bold; height: 1.5; width: 1.2; wrap-count: 20;"></a-mixin>
+						</a-assets>
+
+				<!-- Property for Artist Statements. This mixin id gives an entity Artist Statement properties. -->
+						<a-assets> 
+							<a-mixin id="statement" rotation="-90 0 0" position="-0.6 0.1 -0.7" text="align: left; line-height: 56; height: 2.2; width: 1.2; wrap-count: 25;"></a-mixin>
+						</a-assets>
+
+				<!-- Property id for Artist Bios. This mixin id gives an entity Artist Bio properties. -->
+						<a-assets> 
+							<a-mixin id="bio" rotation="-90 0 0" position="-0.6 0.1 0" height="1.5" width="1.5" wrap-count="25" text="align: left; height: 2.2; width: 1.2; wrap-count: 25; line-height: 56"></a-mixin>
+						</a-assets>
+
+				<!-- Property id for sale price. -->
+						<a-assets>
+							<a-mixin id="price" rotation="-90 0 0" position="-0.6 0.1 0.4" text="align: left; line-height: 56; height: 2.2; width: 1.2; wrap-count: 30;"></a-mixin>
+						</a-assets>
+
+				<!-- Property id for blue background plane -->
+						<a-assets>
+							<a-mixin id="bg" geometry="primitive: plane; height: 3; width: 1.6" material="color: #00448D; opacity: 0.8" rotation="-90 0 0" position="0 0 0"></a-mixin>
+						</a-assets>
+
+				<!-- Property id for Co Art Cafe Logo -->
+						<a-assets>
+							<a-mixin id="logo" geometry="primitive: plane; height: 0.6; width: 0.6" material="src: https://raw.githubusercontent.com/Anran1015/ent/master/logo.png; transparent: true" rotation="-90 0 0" position="0.4 0.2 -1.3"></a-mixin>
+						</a-assets>
+
+
+				<!-- Property id for Instagram and Portfolio buttons -->
+						<a-assets>
+								<a-mixin id="portfolio" geometry="primitive: plane; height: 0.2; width: 1" material="color: #2E2A2E;" rotation="-90 0 0" position="0 0.1 0.6" animation__mouseenter="property: components.material.material.color; type: color; from: #2E2A2E; to: orange; startEvents: mouseenter; dur: 500"
+				                animation__mouseleave="property: components.material.material.color; type: color; from: orange; to: #2E2A2E; startEvents: mouseleave; dur: 500"></a-mixin>
+								<a-mixin id="instagram" geometry="primitive: plane; height: 0.2; width: 1" material="color: #2E2A2E;" rotation="-90 0 0" position="0 0.1 0.9" animation__mouseenter="property: components.material.material.color; type: color; from: #2E2A2E; to: orange; startEvents: mouseenter; dur: 500"
+				                animation__mouseleave="property: components.material.material.color; type: color; from: orange; to: #2E2A2E; startEvents: mouseleave; dur: 500"></a-mixin>
+						</a-assets>
+
+
+<!-- not working  5A. Shaelyn Campbell - Interconnected -->
+<!-- /////////////////////////////Replace the marker link ///////////////////////////// -->
+<a-marker type='pattern' preset="custom" 
+		url="https://raw.githubusercontent.com/Anran1015/ent/master/PATTfile/pattern-ShaelynCampbell2.patt">
+
+				<a-plane mixin="bg"></a-plane>
+				<a-plane mixin="logo"></a-plane>
+
+		<!-- /////////////////////////////Replace the text to artwork name///////////////////////////// -->
+				<a-text mixin="title2" height="2.1" width="0.8" value="Interconnected"></a-text>
+				<a-text mixin="shadow2" height="2.1" width="0.8"  value="Interconnected"></a-text>
+
+		<!-- /////////////////////////////Replace the text to artist name///////////////////////////// -->
+				<a-text mixin="name1" value="Shaelyn Campbell"></a-text>
+
+		<!-- /////////////////////////////Replace the artistic statement below //////////////////// -->
+				<a-text mixin="statement" position="-0.6 0.1 -0.45" value="Integration with natures forms lets this woman become apart of the earth. Her connection to the  river is strong."></a-text>
+
+		<!-- /////////////////////////////Replace the bio below /////////////////////////////////// -->
+				<a-text mixin="bio" position="-0.6 0.1 0.35" value="BIO: I'm an artist interested in exploring how to show how humans and their surroundings are interconnected through surrealism."></a-text>
+
+		<!-- /////////////////////////////Replace the instagram link below if there is one. Remove if no link provided.//////////////////// -->
+				<a-plane id="button" mixin="instagram" position = "0 0.1 0.9" navigate-on-click="url: https://www.instagram.com/scampbell.art/"></a-plane>
+				<!-- <a-plane height="0.2" width="1" rotation="-90 0 0" color ="#2E2A2E" position ="0 0.1 0.9" radius="10" -->
+				<!-- navigate-on-click="url: https://www.instagram.com/scampbell.art/"></a-plane> -->
+				<a-text rotation="-90 0 0" position = '-0.24 0.2 0.88'height="2.2" width="2.2" color="white" value="Instagram" ></a-text>
+</a-marker>
+<!-- END of Shaelyn Campbell - Interconnected -->
+
+
+<!-- 5C. Shaelyn Campbell - Grown and Confused -->
+<!-- /////////////////////////////Replace the marker link ///////////////////////////// -->
+<a-marker type='pattern' preset="custom" 
+		url="https://raw.githubusercontent.com/Anran1015/ent/master/PATTfile/pattern-ShaelynCampbell3.patt">
+
+					<a-plane mixin="bg"></a-plane>
+					<a-plane mixin="logo"></a-plane>
+
+			<!-- /////////////////////////////Replace the text to artwork name///////////////////////////// -->
+					<a-text mixin="title2" value="Grown and Confused"></a-text>
+					<a-text mixin="shadow2" value="Grown and Confused"></a-text>
+
+			<!-- /////////////////////////////Replace the text to artist name///////////////////////////// -->
+					<a-text mixin="name2" value="Shaelyn Campbell"></a-text>
+
+			<!-- /////////////////////////////Replace the artistic statement below //////////////////// -->
+					<a-text mixin="statement" position="-0.6 0.1 -0.45" value="You'd be confused too if your plants could see."></a-text>
+
+			<!-- /////////////////////////////Replace the bio below /////////////////////////////////// -->
+					<a-text mixin="bio" position="-0.6 0.1 0.35" value="BIO: I'm an artist interested in exploring how to show how humans and their surroundings are interconnected through surrealism."></a-text>
+
+			<!-- /////////////////////////////Replace the instagram link below if there is one. Remove if no link provided.//////////////////// -->
+					<a-plane id="button" mixin="instagram" position = "0 0.1 0.9" navigate-on-click="url: https://www.instagram.com/scampbell.art/"></a-plane>
+					<!-- <a-plane height="0.2" width="1" rotation="-90 0 0" color ="#2E2A2E" position ="0 0.1 0.9" radius="10"
+					navigate-on-click="url: https://www.instagram.com/scampbell.art/"></a-plane> -->
+					<a-text rotation="-90 0 0" position = '-0.24 0.2 0.88'height="2.2" width="2.2" color="white" value="Instagram" ></a-text>
+</a-marker>
+<!-- END of Shaelyn Campbell - Grown and Confused -->
+
+
+<!-- 5D. Shaelyn Campbell - Envelop -->
+<!-- /////////////////////////////Replace the marker link ///////////////////////////// -->
+<a-marker type='pattern' preset="custom" 
+		url="https://raw.githubusercontent.com/Anran1015/ent/master/PATTfile/pattern-ShaelynCampbell4.patt">
+
+				<a-plane mixin="bg"></a-plane>
+				<a-plane mixin="logo"></a-plane>
+
+		<!-- /////////////////////////////Replace the text to artwork name///////////////////////////// -->
+				<a-text mixin="title1" value="Envelop"></a-text>
+				<a-text mixin="shadow1" value="Envelop"></a-text>
+
+		<!-- /////////////////////////////Replace the text to artist name///////////////////////////// -->
+				<a-text mixin="name1" value="Shaelyn Campbell"></a-text>
+
+		<!-- /////////////////////////////Replace the artistic statement below //////////////////// -->
+				<a-text mixin="statement" position="-0.6 0.1 -0.45" value="She is content with becoming a tree woman."></a-text>
+
+		<!-- /////////////////////////////Replace the bio below /////////////////////////////////// -->
+				<a-text mixin="bio" position="-0.6 0.1 0.35" value="BIO: I'm an artist interested in exploring how to show how humans and their surroundings are interconnected through surrealism."></a-text>
+
+		<!-- /////////////////////////////Replace the instagram link below if there is one. Remove if no link provided.//////////////////// -->
+				<a-plane id="button" mixin="instagram" position = "0 0.1 0.9" navigate-on-click="url: https://www.instagram.com/scampbell.art/"></a-plane>
+			<!-- 	<a-plane height="0.2" width="1" rotation="-90 0 0" color ="#2E2A2E" position ="0 0.1 0.9" radius="10"
+				navigate-on-click="url: https://www.instagram.com/scampbell.art/"></a-plane> -->
+				<a-text rotation="-90 0 0" position = '-0.24 0.2 0.88'height="2.2" width="2.2" color="white" value="Instagram" ></a-text>
+</a-marker>
+<!-- END of Shaelyn Campbell - Envelop -->
+
+
+<!-- 16. Jihyeong Yang - Future of Fishes -->
+<!-- /////////////////////////////Replace the marker link ///////////////////////////// -->
+<a-marker type='pattern' preset="custom" 
+		url="https://raw.githubusercontent.com/Anran1015/ent/master/PATTfile/pattern-JihyeongYang.patt">
+
+				<a-plane mixin="bg"></a-plane>
+				<a-plane mixin="logo"></a-plane>
+
+		<!-- /////////////////////////////Replace the text to artwork name///////////////////////////// -->
+				<a-text mixin="title2" value="Future of Fishes"></a-text>
+				<a-text mixin="shadow2" value="Future of Fishes"></a-text>
+
+		<!-- /////////////////////////////Replace the text to artist name///////////////////////////// -->
+				<a-text mixin="name2" value="Jihyeong"></a-text>
+
+		<!-- /////////////////////////////Replace the artistic statement below //////////////////// -->
+				<a-text mixin="statement" position="-0.6 0.1 -0.45" value="The white fishes representing myself, tries to become human, something that is only appealing to society's eyes. The fishes want to become human, although even with becoming one, will drown the human no matter how hard it tries to survive in the real world."></a-text>
+
+		<!-- /////////////////////////////Replace the bio below /////////////////////////////////// -->
+				<a-text mixin="bio" position="-0.6 0.1 0.35" value="BIO: I'm an advertising student who loves art, cartoons and animation."></a-text>
+
+		<!-- /////////////////////////////Replace the instagram link below if there is one. Remove if no link provided.//////////////////// -->
+				<a-plane id="button" mixin="instagram" position = "0 0.1 0.9" navigate-on-click="url: 
+				https://www.instagram.com/im_south_korean/"></a-plane>
+				<!-- <a-plane height="0.2" width="1" rotation="-90 0 0" color ="#2E2A2E" position ="0 0.1 0.9" radius="10"
+				navigate-on-click="url: https://www.instagram.com/im_south_korean/"></a-plane> -->
+				<a-text rotation="-90 0 0" position = '-0.24 0.2 0.88'height="2.2" width="2.2" color="white" value="Instagram" ></a-text>
+</a-marker>
+<!-- END of Jihyeong Yang - Future of Fishes -->
+
+
+<!-- 3. Estefani Tito - Memories -->
+<!-- /////////////////////////////Replace the marker link ///////////////////////////// -->
+<a-marker type='pattern' preset="custom" 
+		url="https://raw.githubusercontent.com/Anran1015/ent/master/PATTfile/pattern-EstefaniTito.patt">
+
+					<a-plane mixin="bg"></a-plane>
+					<a-plane mixin="logo"></a-plane>
+
+				<!-- /////////////////////////////Replace the text to artwork name///////////////////////////// -->
+						<a-text mixin="title1" value="Memories"></a-text>
+						<a-text mixin="shadow1" value="Memories"></a-text>
+
+				<!-- /////////////////////////////Replace the text to artist name///////////////////////////// -->
+						<a-text mixin="name1" value="Estefani Tito"></a-text>
+
+				<!-- /////////////////////////////Replace the artistic statement below //////////////////// -->
+						<a-text mixin="statement" height="0.9" width="0.9" value="This extremely detailed and colourful oil painting was made to represent the feeling I have when I do meditation."></a-text>
+
+				<!-- /////////////////////////////Replace the bio below /////////////////////////////////// -->
+						<a-text mixin="bio" height="0.9" width="0.9" value="BIO: My name is Estefani Tito, an OCAD U International Student born in Peru and raised in the Dominican Republic. Currently, I'm doing the Undergraduate program Drawing and Painting: Digital Painting and Expanded Animation and a Minor in Entrepreneurship & Social Innovation in Toronto, Canada."></a-text>
+
+				<!-- /////////////////////////////Replace the portfolio link below if there is one. Remove if no link provided.///////////////////// -->
+						<a-plane height="0.2" width="1" rotation="-90 0 0" color ="#2E2A2E" position ="0 0.1 0.6" 
+						navigate-on-click="url: https://estefani-tito.format.com/"></a-plane>
+						<a-text rotation="-90 0 0" position = '-0.2 0.2 0.6'height="2.2" width="2.2" color="white" value="Portfolio" navigate-on-click="url: https://estefani-tito.format.com/"></a-text>
+
+				<!-- /////////////////////////////Replace the instagram link below if there is one. Remove if no link provided.//////////////////// -->
+						<a-plane id="button" mixin="instagram" position = "0 0.1 0.9" navigate-on-click="url: https://www.instagram.com/estef_arts/"></a-plane>
+	<!-- 					<a-plane height="0.2" width="1" rotation="-90 0 0" color ="#2E2A2E" position ="0 0.1 0.9" radius="10"
+						navigate-on-click="url: https://www.instagram.com/estef_arts/"></a-plane> -->
+					<a-text rotation="-90 0 0" position = '-0.24 0.2 0.88'height="2.2" width="2.2" color="white" value="Instagram" ></a-text>
+	</a-marker>
+<!-- END of Estefani Tito - Memories -->
+
+<!-- 1. Evan Saddler - The Rise -->
+<!-- /////////////////////////////Replace the marker link ///////////////////////////// -->
+<a-marker type='pattern' preset="custom" 
+		url="https://raw.githubusercontent.com/Anran1015/ent/master/PATTfile/pattern-EvanSadler.patt">
+			<!-- RED pattern - if needed for testing - https://raw.githubusercontent.com/Anran1015/testen/master/pattern-textmarker.patt -->
+
+					<a-plane mixin="bg"></a-plane>
+					<a-plane mixin="logo"></a-plane>
+
+			<!-- /////////////////////////////Replace the text to artwork name///////////////////////////// -->
+					<a-text mixin="title1" value="The Rise"></a-text>
+					<a-text mixin="shadow1" value="The Rise"></a-text>
+
+			<!-- /////////////////////////////Replace the text to artist name///////////////////////////// -->
+					<a-text mixin="name1" value="Evan Sadler"></a-text>
+
+			<!-- /////////////////////////////Replace the artistic statement below //////////////////// -->
+					<a-text mixin="statement" value="Anything goes in outer space. No side is up and no side is down. This piece can be set up at any angle of the sun can still be enjoyed at its best."></a-text>
+
+			<!-- /////////////////////////////Replace the bio below /////////////////////////////////// -->
+					<a-text mixin="bio" value="BIO: Canadian who grew up in Japan, now loves to create everything from comics, videos, music, games and drawings."></a-text>
+					<a-text mixin="price" value="For Sale: $200"></a-text>
+
+			<!-- /////////////////////////////Replace the instagram link below if there is one. Remove if no link provided.//////////////////// -->
+					<a-plane id="button" mixin="instagram" position = "0 0.1 0.9" navigate-on-click="url: https://www.instagram.com/evan._.art/"></a-plane>
+					<a-text rotation="-90 0 0" position = '-0.24 0.2 0.88'height="2.2" width="2.2" color="white" value="Instagram" ></a-text>
+	</a-marker>
+<!-- END of Evan Saddler - The Rise -->
+
+
+<!-- 7. Monica Mu - Invasion Sci-fi Poster -->
+<!-- /////////////////////////////Replace the marker link ///////////////////////////// -->
+<a-marker type='pattern' preset="custom" 
+		url="https://raw.githubusercontent.com/Anran1015/ent/master/PATTfile/pattern-MonicaMu.patt">
+
+					<a-plane mixin="bg"></a-plane>
+					<a-plane mixin="logo"></a-plane>
+
+			<!-- /////////////////////////////Replace the text to artwork name///////////////////////////// -->
+					<a-text mixin="title2" value="Invasion Sci-fi Poster"></a-text>
+					<a-text mixin="shadow2" value="Invasion Sci-fi Poster"></a-text>
+
+			<!-- /////////////////////////////Replace the text to artist name///////////////////////////// -->
+					<a-text mixin="name2" value="Monica Mu"></a-text>
+
+			<!-- /////////////////////////////Replace the artistic statement below //////////////////// -->
+					<a-text mixin="statement" position="-0.6 0.1 -0.45" value="the piece is a mock poster for a Science Fiction film festival in Hong Kong. I've chosen the Tian Tan Buddha as my major object and turned it into an alien."></a-text>
+
+			<!-- /////////////////////////////Replace the bio below /////////////////////////////////// -->
+					<a-text mixin="bio" position="-0.6 0.1 0.35" value="BIO: Emerging artist exploring the fields of both animation and illustration!"></a-text>
+</a-marker>					
+<!-- END of Monica Mu - Invasion Sci-fi Poster -->
+
+
+<!-- Helen Wang - LED -->
+<!-- /////////////////////////////Replace the marker link ///////////////////////////// -->
+<a-marker type='pattern' preset="custom" url="https://raw.githubusercontent.com/Anran1015/ent/master/PATTfile/pattern-HelenWang.patt">
+
+										<a-plane mixin="bg"></a-plane>
+										<a-plane mixin="logo"></a-plane>
+
+														<!-- /////////////////////////////Replace the text to artwork name///////////////////////////// -->
+										<a-text mixin="title1" value="LED"></a-text>
+										<a-text mixin="shadow1" value="LED"></a-text>
+
+										<!-- /////////////////////////////Replace the text to artist name///////////////////////////// -->
+										<a-text mixin="name1" value="Xiao Fan Wang"></a-text>
+
+										<!-- /////////////////////////////Replace the artistic statement below //////////////////// -->
+										<a-text mixin="statement" position="-0.6 0.1 -0.45" value="This painting is based on a photo I took of a girl selling light-up balloons at a tourist spot in China. I wanted to capture her feelings of solitude as she stands alone amongst crowds of people, despite being the most eye-catching."></a-text>
+
+										<!-- /////////////////////////////Replace the bio below /////////////////////////////////// -->
+										<a-text mixin="bio" position="-0.6 0.1 0.35" value="BIO: Self-taught painter and illustrator fascinated with urban isolation."></a-text>
+
+										<!-- /////////////////////////////Replace the instagram link below if there is one. Remove if no link provided.//////////////////// -->
+										<a-plane id="button" mixin="instagram" position = "0 0.1 0.9" navigate-on-click="url: https://www.instagram.com/9sei/"></a-plane>
+										<a-text rotation="-90 0 0" position = '-0.24 0.2 0.88'height="2.2" width="2.2" color="white" value="Instagram" ></a-text>
+</a-marker>
+<!-- END of Helen Wang - LED -->
+
+
+<!-- 20. Ruby Gandesha - Self portrait -->
+				<!-- /////////////////////////////Replace the marker link ///////////////////////////// -->
+<a-marker type='pattern' preset="custom" 
+						url="https://raw.githubusercontent.com/Anran1015/ent/master/PATTfile/pattern-RubyGandesha.patt">
+
+						<a-plane mixin="bg"></a-plane>
+						<a-plane mixin="logo"></a-plane>
+
+						<!-- /////////////////////////////Replace the text to artwork name///////////////////////////// -->
+								<a-text mixin="title1" value="Self portrait"></a-text>
+								<a-text mixin="shadow1" value="Self portrait"></a-text>
+
+						<!-- /////////////////////////////Replace the text to artist name///////////////////////////// -->
+								<a-text mixin="name1" value="Ruby Gandesha"></a-text>
+
+						<!-- /////////////////////////////Replace the artistic statement below //////////////////// -->
+								<a-text mixin="statement" position="-0.6 0.1 -0.45" value="Mediums: matte medium transfer & pen on board."></a-text>
+
+						<!-- /////////////////////////////Replace the bio below /////////////////////////////////// -->
+								<a-text mixin="bio" position="-0.6 0.1 0.35" value="BIO: I’m a second year drawing and painting student at OCAD."></a-text>
+
+						<!-- /////////////////////////////Replace the instagram link below if there is one. Remove if no link provided.//////////////////// -->
+						<a-plane id="button" mixin="instagram" position = "0 0.1 0.9" navigate-on-click="url: https://www.instagram.com/ru_blulu/"></a-plane>
+						<a-text rotation="-90 0 0" position = '-0.24 0.2 0.88'height="2.2" width="2.2" color="white" value="Instagram" ></a-text>
+</a-marker>
+
+
+<!-- 13. Dylan Rutledge - The Joker -->
+<!-- /////////////////////////////Replace the marker link ///////////////////////////// -->
+<a-marker type='pattern' preset="custom" 
+		url="https://raw.githubusercontent.com/Anran1015/ent/master/PATTfile/pattern-DylanRutledge.patt">
+
+				<a-plane mixin="bg"></a-plane>
+				<a-plane mixin="logo"></a-plane>
+
+		<!-- /////////////////////////////Replace the text to artwork name///////////////////////////// -->
+				<a-text mixin="title1" value="green man"></a-text>
+				<a-text mixin="shadow1" value="green man"></a-text>
+
+		<!-- /////////////////////////////Replace the text to artist name///////////////////////////// -->
+				<a-text mixin="name1" value="Dylan Rutledge"></a-text>
+
+		<!-- /////////////////////////////Replace the artistic statement below //////////////////// -->
+				<a-text mixin="statement" position="-0.6 0.1 -0.45" value="Through this pieces I wanted to explore the importance of the past and recording It, by exploring Irish heritage. The face represented is a take on an old celtic god 'Cernunnos'."></a-text>
+
+		<!-- /////////////////////////////Replace the bio below /////////////////////////////////// -->
+				<a-text mixin="bio" position="-0.6 0.1 0.35" value="BIO: Born in Huntsville, Ontario. Some hobbies include restoring old tools & furniture as well as skateboarding & snowboarding."></a-text>
+
+		<!-- /////////////////////////////Replace the instagram link below if there is one. Remove if no link provided.//////////////////// -->
+		<!-- 		<a-plane height="0.2" width="1" rotation="-90 0 0" color ="#2E2A2E" position ="0 0.1 0.9" radius="10"
+				navigate-on-click="url: https://www.instagram.com/oddzilla_/"></a-plane> -->
+				<a-plane id="button" mixin="instagram" position = "0 0.1 0.9" navigate-on-click="url: https://www.instagram.com/oddzilla_/"></a-plane>
+				<a-text rotation="-90 0 0" position = '-0.24 0.2 0.88'height="2.2" width="2.2" color="white" value="Instagram" ></a-text>
+</a-marker>
+<!-- END of Dylan Rutledge - The Joker -->
+
+
+<!-- no  Sofia Berger - Sam Likes Cheetos -->
+<!-- /////////////////////////////Replace the marker link ///////////////////////////// -->
+<a-marker type='pattern' preset="custom" 
+		url="https://raw.githubusercontent.com/Anran1015/ent/master/PATTfile/pattern-SofiaBerger.patt">
+
+							<a-plane mixin="bg"></a-plane>
+							<a-plane mixin="logo"></a-plane>
+
+					<!-- /////////////////////////////Replace the text to artwork name///////////////////////////// -->
+							<a-text mixin="title2" value="Sam Likes Cheetos"></a-text>
+							<a-text mixin="shadow2" value="Sam Likes Cheetos"></a-text>
+
+					<!-- /////////////////////////////Replace the text to artist name///////////////////////////// -->
+							<a-text mixin="name2" value="Sofia Berger"></a-text>
+
+					<!-- /////////////////////////////Replace the artistic statement below //////////////////// -->
+							<a-text mixin="statement" position="-0.6 0.1 -0.25" wrap-count="30" value="Whether looking to create a personal narrative from what she encounters, or simply to capture a moment in time, Sofia is always exploring her relationship to subjects that resonate with her in her day-to-day life. She utilizes pop culture and the everyday to depict her personal narrative. Berger draws inspiration from the mundane and day-to-day occurrences in her life as a way of recording an event, recollecting a fond memory, and as a way to pay better attention."></a-text>
+
+					<!-- /////////////////////////////Replace the bio below /////////////////////////////////// -->
+							<a-text mixin="bio" position="-0.6 0.1 0.55" value="BIO: Painter currently located in London, Ontario."></a-text>
+
+					<!-- /////////////////////////////Replace the instagram link below if there is one. Remove if no link provided.//////////////////// -->
+							<a-plane id="button" mixin="instagram" position = "0 0.1 0.9" navigate-on-click="url: 
+							https://www.instagram.com/_sofiaberger/"></a-plane>
+							<a-text rotation="-90 0 0" position = '-0.24 0.2 0.88'height="2.2" width="2.2" color="white" value="Instagram" ></a-text>
+</a-marker>
+<!-- END of Sofia Berger - Sam Likes Cheetos -->
+
+
+
+
+<a-entity camera="" fuse="false"></a-entity>
+</a-scene> 
+</body>
+</html>
